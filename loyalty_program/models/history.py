@@ -18,7 +18,8 @@ class LoyaltyHistory(models.Model):
                                  default=fields.Datetime.now)
     customer_id = fields.Char(string='Tên khách hàng')
 
-
+    def _employee_get(self):
+        return self.env['res.partner'].search([('user_id', '=', uid)], limit=1)
 
 
 

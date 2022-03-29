@@ -15,43 +15,36 @@
                 </xpath>
             </field>
         </record>
-<!--        <record id="customer_form_view" model="ir.ui.view">-->
-<!--            <field name="name">customer.form.view</field>-->
-<!--            <field name="model">res.partner</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <form>-->
-<!--                    <sheet>-->
-<!--                        <div class="oe_title">-->
-<!--                            <label for="name" class="oe_edit_only"/>-->
-<!--                            <h1><field name="name" /></h1>-->
-<!--                        </div>-->
-<!--                        <group>-->
-<!--                            <group>-->
-<!--                                <field name="phone"/>-->
-<!--                                <field name="email"/>-->
-<!--                            </group>-->
-<!--                            <group>-->
-<!--&lt;!&ndash;                                <field name="loyalty_point"/>&ndash;&gt;-->
-<!--                                <field name="loyalty_level"/>-->
-<!--                            </group>-->
-<!--                        </group>-->
-<!--                    </sheet>-->
-<!--                </form>-->
-<!--            </field>-->
-<!--        </record>-->
+
 
 <!--        Tree View-->
+        <record id="customer_tree_view" model="ir.ui.view">
+            <field name="name">customer.tree.view</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <tree position="replace">
+                    <tree>
+                        <field name="display_name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="accumulated_points"/>
+                        <field name="loyalty_level"/>
+                    </tree>
+                </tree>
+            </field>
+        </record>
 <!--        <record id="customer_tree_view" model="ir.ui.view">-->
 <!--            <field name="name">customer.tree.view</field>-->
 <!--            <field name="model">res.partner</field>-->
+<!--            <field name="inherit_id" ref="base.view_partner_tree"/>-->
 <!--            <field name="arch" type="xml">-->
-<!--                <tree string="Customer" default_order="create_date desc">-->
-<!--                    <field name="name"/>-->
-<!--                    <field name="phone"/>-->
-<!--                    <field name="email"/>-->
-<!--&lt;!&ndash;                    <field name="loyalty_point"/>&ndash;&gt;-->
+<!--                <xpath expr="//field[@name='email']" position="after">-->
+<!--                    <field name="accumulated_points"/>-->
+<!--                </xpath>-->
+<!--                <xpath expr="//field[@name='email']" position="after">-->
 <!--                    <field name="loyalty_level"/>-->
-<!--                </tree>-->
+<!--                </xpath>-->
 <!--            </field>-->
 <!--        </record>-->
 
