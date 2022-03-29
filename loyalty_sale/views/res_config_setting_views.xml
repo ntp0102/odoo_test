@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--        Form View-->
+        <record id="res_config_setting_sale_view_form" model="ir.ui.view">
+             <field name="name">res.config.setting.sale.view.form.inherit</field>
+             <field name="model">res.config.settings</field>
+             <field name="priority" eval="20"/>
+             <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+             <field name="arch" type="xml">
+<!--                 <xpath expr="//div[hasclass('settings')]" position="replace">-->
+<!--                    &lt;!&ndash; empty &ndash;&gt;-->
+<!--                 </xpath>-->
+                 <xpath expr="//div[hasclass('settings')]" position="inside">
+                     <div class="app_settings_block" data-string="Respond Email"
+                          string="Respond Email" data-key="res_config_setting_">
+                         <h2>Chương trình khuyến mãi đang diễn ra</h2>
+                         <div class="row mt16 o_settings_container">
+                             <div class="col-12 col-lg-6 o_setting_box">
+                                 <div class="o_setting_left_pane"/>
+                                 <div class="o_setting_right_pane">
+                                     <label for="loyalty_for_sale_id"/>
+                                     <field name="loyalty_for_sale_id" domain="([('active_program','=',True)])"/>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </xpath>
+
+             </field>
+         </record>
+
+<!--        Action -->
+        <record id='res_config_setting_action' model='ir.actions.act_window'>
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+<!--            <field name="context">{'module':'program'}</field>-->
+        </record>
+
+        <menuitem name="LoyaltySale" id="sale_base_menu" />
+        <menuitem name="Settings" id="setting_menu_sale" parent="sale_base_menu" action="res_config_setting_action" sequence="7"/>
+    </data>
+</odoo>
+

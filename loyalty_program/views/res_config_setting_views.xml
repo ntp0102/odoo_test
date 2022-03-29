@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--        Form View-->
+        <record id="res_config_setting_view_form" model="ir.ui.view">
+             <field name="name">res.config.setting.view.form.inherit</field>
+             <field name="model">res.config.settings</field>
+             <field name="priority" eval="10"/>
+             <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+             <field name="arch" type="xml">
+<!--                 <xpath expr="//div[hasclass('settings')]" position="replace">-->
+<!--                    &lt;!&ndash; empty &ndash;&gt;-->
+<!--                 </xpath>-->
+                 <xpath expr="//div[hasclass('settings')]" position="inside">
+                     <div class="app_settings_block" data-string="Respond Email"
+                          string="Respond Email" data-key="res_config_setting_">
+                         <h2>Respond Email</h2>
+                         <div class="row mt16 o_settings_container">
+                             <div class="col-12 col-lg-6 o_setting_box">
+                                 <div class="o_setting_left_pane"/>
+                                 <div class="o_setting_right_pane">
+                                     <label for="loyalty_email_notify"/>
+                                     <field name="loyalty_email_notify"/>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </xpath>
+
+             </field>
+         </record>
+
+<!--        Action -->
+        <record id='res_config_setting_action' model='ir.actions.act_window'>
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module':'program'}</field>
+        </record>
+
+        <menuitem name="LoyaltyProgram" id="program_base_menu" />
+        <menuitem name="Settings" id="setting_menu" parent="program_base_menu" sequence="7"/>
+        <menuitem name="Respond Email" id="respond_email" parent="setting_menu" action="res_config_setting_action" sequence="1"/>
+    </data>
+</odoo>
+

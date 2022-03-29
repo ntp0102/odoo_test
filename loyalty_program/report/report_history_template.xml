@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="report_history">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <br>
+                            </br>
+                            <ul>
+                                <big>
+                                    <li>Mã đơn hàng: <span t-field="o.name"/></li>
+                                    <li>Tên khách hàng: <span t-field="o.customer_id"/></li>
+                                    <li>Tên chương trình khuyến mãi: <span t-field="o.partner_id"/></li>
+                                    <li>Tổng giá trị đơn hàng: <span t-field="o.money_spent"/></li>
+                                    <li>Tổng số điểm tích lũy nhận trong đơn hàng này: <span t-field="o.loyalty_points"/></li>
+                                    <li>Tổng số điểm đã tích lũy được của khách hàng: <span t-field="o.loyalty_point"/></li>
+                                    <li>Thời gian xác nhận đơn hàng: <span t-field="o.date_order"/></li>
+                                </big>
+                            </ul>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

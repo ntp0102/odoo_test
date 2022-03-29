@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--        Form View-->
+<!--        <record id="history_form_view" model="ir.ui.view">-->
+<!--            <field name="name">history.form.view</field>-->
+<!--            <field name="model">history</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+<!--                    <sheet>-->
+<!--                        <div class="oe_title">-->
+<!--                            <label for="name" class="oe_edit_only"/>-->
+<!--                            <h1><field name="name" /></h1>-->
+<!--                        </div>-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="customer_id"/>-->
+<!--&lt;!&ndash;                                <field name="product_id"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <field name="product_price"/>&ndash;&gt;-->
+<!--                                <field name="loyalty_points"/>-->
+<!--                                <field name="money_spent"/>-->
+<!--&lt;!&ndash;                                <field name="loyalty_point"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <field name="date_order"/>&ndash;&gt;-->
+
+
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        Tree View-->
+        <record id="history_tree_view" model="ir.ui.view">
+            <field name="name">history.tree.view</field>
+            <field name="model">history</field>
+            <field name="arch" type="xml">
+                <tree string="Loyalty" default_order="create_date desc">
+                    <field name="name"/>
+                    <field name="customer_id"/>
+                    <field name="money_spent"/>
+                    <field name="partner_id"/>
+                    <field name="loyalty_points"/>
+                    <field name="loyalty_point"/>
+                    <field name="date_order"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        Action -->
+        <record id='history_action' model='ir.actions.act_window'>
+            <field name="name">History</field>
+            <field name="res_model">history</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="LoyaltyProgram" id="program_base_menu" />
+        <menuitem name="Management" id="management_menu" parent="program_base_menu" sequence="2"/>
+        <menuitem name="History" id="history_menu" parent="management_menu" action="history_action" sequence="3"/>
+    </data>
+</odoo>

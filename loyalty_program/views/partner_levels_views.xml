@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--        Form View-->
+        <record id="partner_levels_form_view" model="ir.ui.view">
+            <field name="name">partner.levels.form.view</field>
+            <field name="model">partner.levels</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" /></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="loyalty_points"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        Tree View-->
+        <record id="partner_levels_tree_view" model="ir.ui.view">
+            <field name="name">partner.levels.tree.view</field>
+            <field name="model">partner.levels</field>
+            <field name="arch" type="xml">
+                <tree string="Partner_levels" default_order="create_date desc">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="loyalty_points"/>
+
+                </tree>
+            </field>
+        </record>
+
+<!--        Action -->
+        <record id='partner_levels_action' model='ir.actions.act_window'>
+            <field name="name">Partner Levels</field>
+            <field name="res_model">partner.levels</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="LoyaltyProgram" id="program_base_menu" />
+        <menuitem name="Settings" id="setting_menu" parent="program_base_menu" sequence="7"/>
+        <menuitem name="Partner Level" id="partner_level_menu" parent="setting_menu" action="partner_levels_action" sequence="2"/>
+    </data>
+</odoo>

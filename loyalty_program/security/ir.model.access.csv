@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_program,access.program,model_program,base.group_user,1,1,1,1
+access_history,access.history,model_history,base.group_user,1,1,1,1
+access_partner_levels,access.partner.levels,model_partner_levels,base.group_user,1,1,1,1
+access_res_config_settings,access.res.config.settings,model_res_config_settings,base.group_user,1,1,1,1
