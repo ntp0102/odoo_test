@@ -45,5 +45,22 @@ class LoyaltySale(models.Model):
         res = super(LoyaltySale, self).action_confirm()
         return True
 
+    def action_cancel(self):
+        vals1 = {
+            'accumulated_points': self.loyalty_points_accumulated - self.loyalty_points_accumulating
+        }
+        self.env['res.partner'].browse(self.partner_id.ids[0]).write(vals1)
 
+        vals2 = {
+            'name': self.name,
+            'customer_id': self.partner_id.name,
+            'money_spent': - float(self.amount_total),
+            'loyalty_points': - self.loyalty_points_accumulating,
+            'loyalty_point': self.loyalty_points_accumulated,
+            'partner_id': self.program.name
+        }
+        self.env['history'].create(vals2)
+
+        res = super(LoyaltySale, self).action_cancel()
+        return True
 
